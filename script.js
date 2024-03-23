@@ -4,7 +4,7 @@ const completedExercisesList = document.getElementById('completed-exercises-list
 const startButton = document.getElementById('start');
 const pauseButton = document.getElementById('pause');
 const resetButton = document.getElementById('reset');
-const histButton = document.getElementById('history');
+
 
 let timer;
 let isRunning = false;
@@ -55,12 +55,6 @@ function startTimer() {
         showExercise();
     }
 }
-function startTimer2() {
-    if (!isRunning) {
-        isRunning = false;
-        showExercise2();
-    }
-}
 function pauseTimer() {
     clearInterval(timer);
     clearInterval(stretchInterval);
@@ -89,9 +83,7 @@ function showExercise() {
         index = (index + 1) % stretchExercises.length;
     }, 5 * 60 * 1000); // 5 minutos
 }
-function showExercise2(exercise) {
-    alert("1ªLevante-se e estique os braços acima da cabeça por 10 segundos\n2ªIncline o tronco para os lados, mantendo o alongamento por 15 segundos em cada lado.\n3ªGire os ombros para trás em movimentos circulares por 20 segundos.\n4ªFaça uma rotação no pescoço, movendo-o suavemente para a esquerda e para a direita por 10 segundos.\n5ªEstique as pernas e toque os dedos dos pés, mantendo a posição por 15 segundos.");
-}
+
 function completeExercise() {
     const currentExercise = stretchExercises.find(exercise => exercise === exerciseDescription.textContent.replace('Exercício de Alongamento: ', ''));
     if (currentExercise && !completedExercises.includes(currentExercise)) {
@@ -106,10 +98,7 @@ function completeExercise() {
 
 function addToCompletedExercises(exercise) {
     const li = document.createElement('li');
-    const minutes = Math.floor(remainingTime / 60);
-    const seconds = remainingTime % 60;
-    const timeElapsed = `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
-    li.textContent = `${exercise} - Tempo: ${timeElapsed}`;
+    li.textContent = exercise;
     const img = document.createElement('img');
     img.src = 'assets/tarefaicon01.jpeg';
     img.alt = 'checkmark';
@@ -120,14 +109,15 @@ function addToCompletedExercises(exercise) {
     // Adiciona classe automaticamente para destacar exercícios concluídos após 20 segundos
     setTimeout(() => {
         li.classList.add('completed');
-    }, 60000);
+    }, 4 * 1 * 1000); // 4 minutos
 }
+
 
 startButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
 
 resetButton.addEventListener('click', resetTimer);
-histButton.addEventListener('click', startTimer2);
+
 
 function resetTimer() {
     clearInterval(timer); // Limpa o temporizador
