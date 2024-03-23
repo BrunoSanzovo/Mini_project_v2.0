@@ -15,6 +15,7 @@
 </head>
 
 <body class="body">
+   
     <main class="main display-flex justify-content-se align-items">
         
         <section class="content display-flex justify-content-se align-items">
@@ -36,7 +37,7 @@
                     <div class="or display-flex flex-direction-c">
                         <div class="or-hr display-flex align-items">
                             <hr style="flex: 1;">
-                    
+                            
                         </div>
                         <button class="button"><a href="cadastro.html">REGISTRE AQUI!</a></button>
                         <button class="button display-flex justify-content-ce align-items google-button">
@@ -45,17 +46,18 @@
                         <button class="button display-flex justify-content-ce align-items facebook-button">
                             <img src="./assets/facebook01.png" alt="Logo Facebook">Entre pelo Facebook
                         </button>
-                        
                     </div>
                 </form>
+                
             </section>
         </section>
     </main>
 
-    <audio id="audio" src="assets/pirata.mp3" preload="auto" ></audio>
-    <button onclick="playAudio()">Reproduzir Som</button>
+    
 </script>
-
+<audio id="audio" src="assets/pirata.mp3" preload="auto" ></audio>
+<button onclick="playAudio()">Reproduzir Som</button>
+<button onclick="pauseAudio()">Pausar Som</button>
 <script>
     var audio = document.getElementById("audio");
     audio.volume = 0.2; // Define o volume
@@ -63,8 +65,10 @@
     function playAudio() {
         audio.play();
     }
-
-    window.onload = playAudio;
+    function pauseAudio() {
+        audio.pause();
+    }
+    
 </script>
     
   
