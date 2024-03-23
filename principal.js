@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
     const formLogin = document.querySelector('.form-login');
     const forgotPasswordLink = document.getElementById('forgotPasswordLink');
